@@ -74,11 +74,59 @@ function checkZip() {
 window.onload = () => {
     document.getElementById("country").onchange = checkZip;
     document.getElementById("ZIP").oninput = checkZip;
+    document.getElementById("pwd").oninput = checkPassword;
+    document.getElementById("pwdconf").oninput = checkPasswordConfirmation;
 }
 
+// Password checker
 
+function checkPassword() {
+    const pwd = document.getElementById("pwd");
+    const pwdError = pwd.nextElementSibling;
 
+    const pwdRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{8,}$/;
 
-const pwd = document.getElementById("pwd");
-const pwdConf = document.getElementById("pwdconf");
+    const pwdIsValid = pwd.value.length === 0 || pwdRegex.test(pwd.value);
+    pwd.className = pwdIsValid ? "valid" : "invalid";
+
+    /*pwd.addEventListener("input", () => {
+        const pwdIsValid = pwd.value.length === 0 || pwdRegex.test(pwd.value);
+        if(pwdIsValid) {
+            pwd.className = "valid";
+            pwdError.textContent = "";
+            pwdError.className = "error";
+        } else {
+            pwd.className = "invalid";
+            pwdError.textContent = "The password has to be 8 characters long. You need to enter at least one uppercase letter, one lowercase letter, one number and one special character (!?&%*)."
+        }
+    });*/
+        if(pwdIsValid) {
+            pwd.className = "valid";
+            pwdError.textContent = "";
+            pwdError.className = "error";
+        } else {
+            pwd.className = "invalid";
+            pwdError.textContent = "The password has to be 8 characters long. You need to enter at least one uppercase letter, one lowercase letter, one number and one special character (!?&%*_)."
+        }
+    ;
+    }
+
+function checkPasswordConfirmation() {
+    const pwdConf = document.getElementById("pwdconf");
+    const pwdConfError = pwdConf.nextElementSibling;
+    const pwd = document.getElementById("pwd").value;
+
+    const pwdConfisValid = pwdConf.length === 0 || pwdConf.value === pwd;
+    pwdConf.className = pwdConfisValid ? "valid" : "invalid";
+    if(pwdConfisValid) {
+        pwdConf.className = "valid";
+        pwdConfError.className = "error";
+        pwdConfError.textContent = "";
+    } else {
+        pwdConf.className = "invalid";
+        pwdConfError.className = "error active";
+        pwdConfError.textContent = "Passwords aren't matching. Please check again.";
+    }
+}
+
 
