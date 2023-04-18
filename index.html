@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Form Validation</title>
+</head>
+<body>
+
+    <form novalidate>
+        <p>
+            <label for="mail">
+                <span>Please enter an email address:</span>
+                <input type="text" id="mail" name="mail">
+                <span class="error" aria-live="polite"></span>
+            </label>
+        </p>
+        <p>
+            <label for="country">
+                <span>Which country are you from?</span>
+                <select name="country" id="country">
+                    <option value="de">Germany</option>
+                    <option value="ch">Switzerland</option>
+                    <option value="at">Austria</option>
+                </select>
+            </label>
+        </p>
+
+        <p>
+            <label for="ZIP">
+                <span>ZIP Code:</span>
+                <input type="number" id="ZIP" name="ZIP">
+                <span class="error" aria-live="polite"></span>
+
+            </label>
+        </p>
+
+        <p>
+            <label for="pwd">
+                <span>Enter a password:</span>
+                <input type="password" name="pwd" id="pwd">
+            </label>
+        </p>
+
+        <p>
+            <label for="pwdconf">
+                <span>Confirm your password:</span>
+                <input type="password" name="pwdconf" id="pwdconf">
+            </label>
+        </p>
+        
+        <input type="submit" value="Submit"></input>
+    </form>
+    
+</body>
+</html>
+
+<script src="main.js"></script>
